@@ -28,6 +28,7 @@ export class RollbarErrorHandler implements ErrorHandler {
   }
 }
 
+// workarround https://github.com/rollbar/rollbar.js/issues/402
 export function rollbarFactory() {
   return new Rollbar(rollbarConfig).configure(rollbarConfig);
 }
