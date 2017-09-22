@@ -12,19 +12,14 @@ const rollbarConfig = {
 
 @Injectable()
 export class RollbarErrorHandler implements ErrorHandler {
-  constructor(private injector: Injector) { }
+  rollbar: any;
+  constructor(private injector: Injector) {
+    this.rollbar = injector.get(RollbarService);
+  }
 
   handleError(err: any ): void {
-
     console.log(err);
-
-    // workaround for https://github.com/rollbar/rollbar.js/issues/439
-    if (err.message === 'Maximum call stack size exceeded') {
-      // console.log('range error');
-      return;
-    }
-    const rollbar = this.injector.get(RollbarService);
-    rollbar.error(err.originalError || err);
+    this.rollbar.error(err.originalError || err);
   }
 }
 
