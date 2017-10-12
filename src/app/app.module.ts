@@ -5,8 +5,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import * as Rollbar from 'rollbar';
-import {RollbarErrorHandler, rollbarFactory, RollbarService} from '../services/rollbar-error-handler';
+import {RollbarErrorHandler} from '../services/rollbar-error-handler';
 
+const rollbarConfig = {
+  accessToken: '366725913878441199d1f877c5a2cd8d',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+  enabled: true,
+  environment: 'dev'
+};
+
+
+export function rollbarFactory() {
+  return new Rollbar(rollbarConfig);
+}
 
 
 @NgModule({
@@ -19,10 +31,7 @@ import {RollbarErrorHandler, rollbarFactory, RollbarService} from '../services/r
   ],
   providers: [
     { provide: ErrorHandler, useClass: RollbarErrorHandler },
-    {
-      provide: RollbarService,
-      useFactory: rollbarFactory
-    },
+    { provide: Rollbar,  useFactory: rollbarFactory }
   ],
   bootstrap: [AppComponent]
 })
