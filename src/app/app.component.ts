@@ -8,7 +8,9 @@ import * as Rollbar from 'rollbar';
 })
 export class AppComponent {
 
-  constructor(private injector: Injector) { }
+  constructor(private rollbar: Rollbar) {
+
+  }
   title = 'Angular 4 with Rollbar';
   errorMessage = 'Hello World, Error Message';
 
@@ -18,7 +20,6 @@ export class AppComponent {
     }
   }
   manualHandle() {
-    const rollbar = this.injector.get(Rollbar);
-      rollbar.error(this.errorMessage);
+      this.rollbar.error(this.errorMessage);
   }
 }

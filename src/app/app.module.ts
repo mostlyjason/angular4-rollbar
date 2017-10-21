@@ -8,7 +8,7 @@ import * as Rollbar from 'rollbar';
 import {RollbarErrorHandler} from '../services/rollbar-error-handler';
 
 const rollbarConfig = {
-  accessToken: '366725913878441199d1f877c5a2cd8d',
+  accessToken: 'POST_CLIENT_ITEM_ACCESS_TOKEN',
   captureUncaught: true,
   captureUnhandledRejections: true,
   enabled: true,
