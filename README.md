@@ -1,5 +1,5 @@
 # AngularRollbar
 
 
-Angular 4 error handling with rollbar.
+An example of Angular 4 error handling with Rollbar.
 
